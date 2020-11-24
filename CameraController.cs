@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private const float cameraSpeed = 100f;
-    public float rotationSpeed = 50f;
-    public float zoomSpeed = 200f;
+    private const float cameraSpeed = 70f;
+    private const float rotationSpeed = 50f;
+    private const float zoomSpeed = 500f;
 
     [Header("Camera Limitations")]
     public Vector2 xAxis;
