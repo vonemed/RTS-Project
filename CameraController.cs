@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private const float cameraSpeed = 70f;
-    private const float rotationSpeed = 50f;
-    private const float zoomSpeed = 500f;
+    const float cameraSpeed = 70f;
+    const float rotationSpeed = 50f;
+    const float zoomSpeed = 500f;
 
     [Header("Camera Limitations")]
     public Vector2 xAxis;
     public Vector2 zAxis;
     public Vector2 zoomLimit;
 
-    private Vector3 cameraPos; // Current position of camera
+    Vector3 cameraPos; // Current position of camera
 
     void Update()
     {
