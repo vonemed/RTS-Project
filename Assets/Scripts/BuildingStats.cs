@@ -23,18 +23,24 @@ public class BuildingStats : MonoBehaviour
 
     void Update()
     {
-        if(button1 && button2)
+        if (button1 && button2)
         {
-            if(townHall)
+            if (townHall)
             {
+                //Need a shortcut
+                //Button1
                 button1.AddComponent<UnitSpawn>();
-                button2.AddComponent<BuildingUpgrade>();
-
                 button1.GetComponent<UnitSpawn>().unitPrefab = unit;
                 button1.GetComponent<UnitSpawn>().spawnPoint = spawn;
                 townHall = false; //Stop flag for now
+
+                //Button2
+                button2.AddComponent<BuildingUpgrade>();
+                button2.GetComponent<BuildingUpgrade>().hp = hp;
+                button2.GetComponent<BuildingUpgrade>().currentBuilding = this;
+
             }
-            if(barracks)
+            if (barracks)
             {
 
             }

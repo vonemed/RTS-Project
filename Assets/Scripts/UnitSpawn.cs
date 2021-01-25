@@ -13,10 +13,6 @@ public class UnitSpawn : MonoBehaviour
         spawnButton.onClick.AddListener(spawnUnit);
     }
 
-    void Update()
-    {
-        
-    }
     void spawnUnit()
     {
         Debug.Log("Spawning Unit");
