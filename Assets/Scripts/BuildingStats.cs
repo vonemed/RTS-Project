@@ -5,24 +5,45 @@ using UnityEngine.UI;
 public class BuildingStats : MonoBehaviour
 {
     //UI
+    //Parameters
+    [Header("Parameters")]
     public int hp;
     public string nameTag;
+    public int gold_cost;
+    public int wood_cost;
+    public int minerals_cost;
+
+    [Header("Visuals")]
     public Sprite icon;
     public Sprite unitIcon1;
     public Sprite unitIcon2;
+
     public GameObject button1;
     public GameObject button2;
+
+    // Utility
+    [Header("Utility")]
+    public GameObject spawn;
+    public GameObject unit;
+    public ResourcesUI eventSystem;
+    public bool justPlaced;
 
     public bool townHall;
     public bool barracks;
     public bool special;
 
-    // Utility
-    public GameObject spawn;
-    public GameObject unit;
-
+    void Start()
+    {
+        eventSystem = FindObjectOfType<ResourcesUI>();
+    }
     void Update()
     {
+        if(justPlaced)
+        {
+            deductCost();
+            justPlaced = false;
+        }
+
         if (button1 && button2)
         {
             if (townHall)
@@ -49,5 +70,13 @@ public class BuildingStats : MonoBehaviour
                  
             }
         }
+    }
+
+    void deductCost()
+    {
+        //Deducting the resources required to build
+        eventSystem.GetComponent<ResourcesUI>().gold_num -= gold_cost;
+        eventSystem.GetComponent<ResourcesUI>().wood_num -= wood_cost;
+        eventSystem.GetComponent<ResourcesUI>().minerals_num -= minerals_cost;
     }
 }

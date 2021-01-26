@@ -11,22 +11,22 @@ public class ResourcesUI : MonoBehaviour
 
     [Header("Wood")]
     public Text wood_text;
-    [SerializeField] int wood_num;
+    public int wood_num;
 
     [Header("Food")]
     public Text food_text;
-    [SerializeField] int food_num;
+    public int food_num;
 
     [Header("Minerals")]
     public Text minerals_text;
-    [SerializeField] int minerals_num;
+    public int minerals_num;
 
     void Start()
     {
-        gold_num = 150;
-        wood_num = 100;
-        food_num = 100;
-        minerals_num = 100;
+        gold_num = 500;
+        wood_num = 200;
+        food_num = 300;
+        minerals_num = 50;
     }
 
     void Update()

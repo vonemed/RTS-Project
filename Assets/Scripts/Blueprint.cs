@@ -23,6 +23,7 @@ public class Blueprint : MonoBehaviour
         //Destroy the blueprint once left mouse button is pressed
         if (Input.GetMouseButton(0))
         {
+            prefab.GetComponent<BuildingStats>().justPlaced = true;
             Instantiate(prefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }

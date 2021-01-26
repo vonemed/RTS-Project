@@ -25,8 +25,6 @@ public class BuildingUpgrade : MonoBehaviour
         if (!upgraded)
         {
             hp += 100;
-            Debug.Log("Upgrading BUILDING!");
-            Debug.Log(hp);
             upgraded = true;
             currentBuilding.hp = hp;
         }

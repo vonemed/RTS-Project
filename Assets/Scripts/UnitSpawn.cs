@@ -15,7 +15,6 @@ public class UnitSpawn : MonoBehaviour
 
     void spawnUnit()
     {
-        Debug.Log("Spawning Unit");
         Instantiate(unitPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
     }
 }

@@ -2,7 +2,7 @@
 
 public class BuildingsCreator : MonoBehaviour
 {
-    public BuildingBlueprint townHall;
+    public BuildingStats townHall;
     public BuildingBlueprint barracks;
     public BuildingBlueprint specialBuilding;
 }
