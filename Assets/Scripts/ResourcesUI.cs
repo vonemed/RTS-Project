@@ -21,6 +21,9 @@ public class ResourcesUI : MonoBehaviour
     public Text minerals_text;
     public int minerals_num;
 
+    [Header("Others")]
+    Text message; 
+
     void Start()
     {
         gold_num = 500;
@@ -31,9 +34,38 @@ public class ResourcesUI : MonoBehaviour
 
     void Update()
     {
+        // Checks if resources are bellow zero
+        resourceCheck();
         gold_text.text = "Gold: " + gold_num;
         wood_text.text = "Wood: " + wood_num;
         food_text.text = "Food: " + food_num;
         minerals_text.text = "Minerals: " + minerals_num;
+    }
+
+    void resourceCheck()
+    {
+        if (gold_num < 0)
+        {
+            gold_num = 0;
+            Debug.Log("Insufficient gold");
+        }
+
+        if (wood_num < 0)
+        {
+            wood_num = 0;
+            Debug.Log("Insufficient wood");
+        }
+
+        if (food_num < 0)
+        {
+            food_num = 0;
+            Debug.Log("Insufficient food");
+        }
+
+        if (minerals_num < 0)
+        {
+            minerals_num = 0;
+            Debug.Log("Insufficient minerals");
+        }
     }
 }
