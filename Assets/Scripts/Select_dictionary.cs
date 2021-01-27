@@ -15,7 +15,7 @@ public class Select_dictionary : MonoBehaviour
         {
             selectedObjects.Add(id, _object);
             _object.AddComponent<Selected>();
-            Debug.Log("Added " + id + " to selected list");
+            //Debug.Log("Added " + id + " to selected list");
         }
 
     }

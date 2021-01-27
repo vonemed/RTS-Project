@@ -17,7 +17,9 @@ public class Selecting : MonoBehaviour
     public GameObject descButton2;
     
     BuildingsCreator database;
-    BuildingStats target;
+    BuildingStats targetBuilding;
+    UnitStats targetStats;
+    ResourceStats resourceStats;
     bool selected;
 
     void Start()
@@ -41,7 +43,7 @@ public class Selecting : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 50000.0f))
             {
-                Debug.Log(hit.collider.name);
+                //Debug.Log(hit.collider.name);
 
                 if (hit.collider.tag == "Building")
                 {
@@ -68,6 +70,13 @@ public class Selecting : MonoBehaviour
                     objectsList.deselectAll();
                     objectsList.addSelected(hit.transform.gameObject);
                     selected = true;
+                    onSelectUnit();
+                }
+
+                if (hit.collider.tag == "Resource")
+                {
+                    /*resourceStats = hit.transform.GetComponent<ResourceStats>();
+                    _name.text = resourceStats.nameTag;*/
                 }
             }
         }
@@ -80,23 +89,37 @@ public class Selecting : MonoBehaviour
 
     void onSelectBuilding()
     {
-        target = hit.transform.GetComponent<BuildingStats>();
+        targetBuilding = hit.transform.GetComponent<BuildingStats>();
         // NEED TO CLEAN UP THE CODE
         //Updating description of selected object
-        _name.text = target.nameTag; // Name
-        hp.text = "HP: " + target.hp; // Hp
+        _name.text = targetBuilding.nameTag; // Name
+        hp.text = "HP: " + targetBuilding.hp; // Hp
         icon.enabled = true;
-        icon.sprite = target.icon; // Icon
+        icon.sprite = targetBuilding.icon; // Icon
 
         descButton1.gameObject.SetActive(true);
         descButton2.gameObject.SetActive(true);
 
         // TODO: MOVE THIS CODE TO THE BUILDING STATS
-        descButton1.GetComponent<Button>().image.sprite = target.unitIcon1;
-        descButton2.GetComponent<Button>().image.sprite = target.unitIcon2;
+        descButton1.GetComponent<Button>().image.sprite = targetBuilding.unitIcon1;
+        descButton2.GetComponent<Button>().image.sprite = targetBuilding.unitIcon2;
 
         // Assigning the description ui buttons to the building buttons
-        target.button1 = descButton1;
-        target.button2 = descButton2;
+        targetBuilding.button1 = descButton1;
+        targetBuilding.button2 = descButton2;
+    }
+
+    void onSelectUnit()
+    {
+        descButton1.gameObject.SetActive(false);
+        descButton2.gameObject.SetActive(false);
+
+        targetStats = hit.transform.GetComponent<UnitStats>();
+        //Updating description of selected object
+        _name.text = targetStats.nameTag; // Name
+        hp.text = "HP: " + targetStats.hp; // Hp
+        icon.enabled = true;
+        icon.sprite = targetStats.icon; // Icon
+
     }
 }
