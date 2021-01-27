@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    const float cameraSpeed = 60f;
+    const float cameraSpeed = 40f;
     const float rotationSpeed = 50f;
     const float zoomSpeed = 400f;
 
@@ -30,21 +30,26 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            //cameraPos.x -= cameraSpeed * Time.deltaTime;
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
-            transform.Translate(0, 0, cameraSpeed * Time.deltaTime);
+            transform.Translate((-cameraSpeed * Time.deltaTime), 0, 0);
             cameraPos = transform.localPosition;
             transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            cameraPos.z -= cameraSpeed * Time.deltaTime;
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+            transform.Translate(0, 0, (-cameraSpeed * Time.deltaTime));
+            cameraPos = transform.localPosition;
+            transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            cameraPos.x += cameraSpeed * Time.deltaTime;
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+            transform.Translate(cameraSpeed * Time.deltaTime, 0, 0);
+            cameraPos = transform.localPosition;
+            transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
         }
         #endregion
         #region CameraRotation
