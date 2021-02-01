@@ -75,8 +75,8 @@ public class BuildingStats : MonoBehaviour
     void deductCost()
     {
         //Deducting the resources required to build
-        eventSystem.GetComponent<ResourcesUI>().gold_num -= gold_cost;
-        eventSystem.GetComponent<ResourcesUI>().wood_num -= wood_cost;
-        eventSystem.GetComponent<ResourcesUI>().minerals_num -= minerals_cost;
+        eventSystem.gold_num -= gold_cost;
+        eventSystem.wood_num -= wood_cost;
+        eventSystem.minerals_num -= minerals_cost;
     }
 }
