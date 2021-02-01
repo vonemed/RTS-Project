@@ -20,6 +20,7 @@ public class UnitStats : MonoBehaviour
     // Utility
     [Header("Utility")]
     public ResourcesUI eventSystem;
+    public ResourceStats resStats;
     public bool gatherer;
     public bool melee;
     public bool archer;
@@ -29,7 +30,7 @@ public class UnitStats : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<Selected>())
+        if (GetComponent<Selected>() && gatherer)
         {
             if (Input.GetMouseButton(1))
             {
@@ -42,6 +43,9 @@ public class UnitStats : MonoBehaviour
                     if(hit.collider.name == "GoldMine")
                     {
                         Debug.Log("WE GOT GOLD!");
+                        resStats = hit.transform.GetComponent<ResourceStats>();
+
+                        gathering();
                         //Check the distance to the mine
                         //If the unit is close enough start gathering resource
                         //Access resource UI and start to add resource at specific rate and deducting it from resource stats of selected resource deposit
@@ -49,5 +53,10 @@ public class UnitStats : MonoBehaviour
                 }
             }
         }
+    }
+
+    void gathering()
+    {
+        
     }
 }
