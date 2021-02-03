@@ -69,6 +69,18 @@ public class UnitStats : MonoBehaviour
                         //Check the distance to the mine
                         //If the unit is close enough start gathering resource
                     }
+                    if (hit.collider.name == "ForestTree")
+                    {
+                        resStats = hit.transform.GetComponent<ResourceStats>();
+                        gathering = true;
+                        wood = true;
+                    }
+                    if (hit.collider.name == "Mineral")
+                    {
+                        resStats = hit.transform.GetComponent<ResourceStats>();
+                        gathering = true;
+                        mineral = true;
+                    }
                     else
                     {
                         gathering = false;
@@ -101,7 +113,11 @@ public class UnitStats : MonoBehaviour
                 gatheringRest = 2f / gatheringRate;
             }
         }
-        gatheringRest -= Time.deltaTime;
+
+        if (gatheringRest >= 0)
+        {
+            gatheringRest -= Time.deltaTime;
+        }
     }
 
 }
