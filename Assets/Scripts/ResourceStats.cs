@@ -5,7 +5,6 @@ public class ResourceStats : MonoBehaviour
 {
     [Header("Parameters")]
     public string nameTag;
-    public int amount;
     public bool gold;
     public bool wood;
     public bool mineral;

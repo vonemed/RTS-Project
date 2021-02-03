@@ -16,7 +16,6 @@ public class Selecting : MonoBehaviour
     public GameObject descButton1;
     public GameObject descButton2;
     
-    BuildingsCreator database;
     BuildingStats targetBuilding;
     UnitStats targetStats;
     ResourceStats resourceStats;
@@ -25,7 +24,6 @@ public class Selecting : MonoBehaviour
     void Start()
     {
         objectsList = GetComponent<Select_dictionary>();
-        database = GetComponent<BuildingsCreator>();
     }
 
     void Update()
