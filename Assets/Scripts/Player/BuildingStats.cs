@@ -25,6 +25,7 @@ public class BuildingStats : MonoBehaviour
     [Header("Utility")]
     public GameObject spawn;
     public GameObject unit;
+    public GameObject unit2;
     public ResourcesUI eventSystem;
     public bool justPlaced;
 
@@ -32,43 +33,64 @@ public class BuildingStats : MonoBehaviour
     public bool barracks;
     public bool special;
 
+    bool selected;
+
     void Start()
     {
         eventSystem = FindObjectOfType<ResourcesUI>();
     }
     void Update()
     {
+        if(GetComponent<Selected>())
+        {
+            selected = true;
+        }
         if(justPlaced)
         {
             deductCost();
             justPlaced = false;
         }
 
-        if (button1 && button2)
+        if (button1 && button2 && selected)
         {
             if (townHall)
             {
                 //Need a shortcut
                 //Button1
-                button1.AddComponent<UnitSpawn>();
+                button1.GetComponent<UnitSpawn>().enabled = true;
                 button1.GetComponent<UnitSpawn>().unitPrefab = unit;
                 button1.GetComponent<UnitSpawn>().spawnPoint = spawn;
                 townHall = false; //Stop flag for now
 
                 //Button2
-                button2.AddComponent<BuildingUpgrade>();
+                button2.GetComponent<BuildingUpgrade>().enabled = true;
                 button2.GetComponent<BuildingUpgrade>().hp = hp;
                 button2.GetComponent<BuildingUpgrade>().currentBuilding = this;
 
             }
             if (barracks)
             {
+                button1.GetComponent<UnitSpawn>().enabled = true;
+                button1.GetComponent<UnitSpawn>().unitPrefab = unit;
+                button1.GetComponent<UnitSpawn>().spawnPoint = spawn;
+                barracks = false;
 
+                button2.GetComponent<UnitSpawn>().enabled = true;
+                button2.GetComponent<UnitSpawn>().unitPrefab = unit;
+                button2.GetComponent<UnitSpawn>().spawnPoint = spawn;
             }
             if(special)
             {
                  
             }
+        }
+
+        if(!selected && button1 && button2)
+        {
+            //THIS IS NOT OPTIMAl
+            button1.GetComponent<UnitSpawn>().enabled = false;
+            button2.GetComponent<UnitSpawn>().enabled = false;
+            button2.GetComponent<BuildingUpgrade>().enabled = false;
         }
     }
 
