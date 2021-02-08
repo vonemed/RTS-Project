@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             transform.Translate(0, 0, cameraSpeed * Time.deltaTime);
             cameraPos = transform.localPosition;
-            transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
+            transform.localEulerAngles = new Vector3(50, transform.localEulerAngles.y, 0);
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             transform.Translate((-cameraSpeed * Time.deltaTime), 0, 0);
             cameraPos = transform.localPosition;
-            transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
+            transform.localEulerAngles = new Vector3(50, transform.localEulerAngles.y, 0);
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             transform.Translate(0, 0, (-cameraSpeed * Time.deltaTime));
             cameraPos = transform.localPosition;
-            transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
+            transform.localEulerAngles = new Vector3(50, transform.localEulerAngles.y, 0);
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -49,7 +49,7 @@ public class CameraController : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             transform.Translate(cameraSpeed * Time.deltaTime, 0, 0);
             cameraPos = transform.localPosition;
-            transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
+            transform.localEulerAngles = new Vector3(50, transform.localEulerAngles.y, 0);
         }
         #endregion
         #region CameraRotation
@@ -58,14 +58,14 @@ public class CameraController : MonoBehaviour
         {
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             transform.Rotate(transform.up, -rotationSpeed * Time.deltaTime);
-            transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
+            transform.localEulerAngles = new Vector3(50, transform.localEulerAngles.y, 0);
         }
 
         if (Input.GetKey(KeyCode.E))
         {
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
             transform.Rotate(transform.up, rotationSpeed * Time.deltaTime);
-            transform.localEulerAngles = new Vector3(80, transform.localEulerAngles.y, 0);
+            transform.localEulerAngles = new Vector3(50, transform.localEulerAngles.y, 0);
         }
 
         #endregion
