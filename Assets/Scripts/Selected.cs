@@ -6,11 +6,25 @@ public class Selected : MonoBehaviour
 {
     void Start()
     {
-        GetComponent<Renderer>().material.color = Color.red;
+        //Trying to access Renderer, depending where its located
+        if (TryGetComponent(out Renderer rend))
+        {
+            rend.material.color = Color.red;
+        } else
+        {
+            GetComponentInChildren<Renderer>().material.color = Color.red;
+        }
     }
 
     private void OnDestroy()
     {
-        GetComponent<Renderer>().material.color = Color.white;
+        if (TryGetComponent(out Renderer rend))
+        {
+            rend.material.color = Color.white;
+        }
+        else
+        {
+            GetComponentInChildren<Renderer>().material.color = Color.white;
+        }
     }
 }
