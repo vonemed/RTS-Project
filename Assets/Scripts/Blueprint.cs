@@ -4,19 +4,13 @@ public class Blueprint : MonoBehaviour
 {
     RaycastHit hit;
     public GameObject prefab;
-    public float rayDistance;
 
-    void Start()
-    {
-        rayDistance = 25.0f;
-    }
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
 
         // Only collides with "Ground" layer
-        if (Physics.Raycast(ray, out hit, rayDistance, 1 << 8))
+        if (Physics.Raycast(ray, out hit, 500000f, 1 << 8))
         {
             transform.position = hit.point;
             //Need to lift the building up when blueprint is active
