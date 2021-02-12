@@ -31,4 +31,12 @@ public class ResourceStats : MonoBehaviour
             mineralNum = 100;
         }
     }
+
+    void Update()
+    {
+        if(goldNum <= 0 && woodNum <= 0 && mineralNum <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
