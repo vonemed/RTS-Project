@@ -6,6 +6,8 @@ public class Melee : Unit
 {
     public ResourcesUI eventSystem;
     public ResourceStats resStats;
+    UnitMovement motor;
+
 
     public Melee()
     {
@@ -17,6 +19,7 @@ public class Melee : Unit
     { 
         eventSystem = FindObjectOfType<ResourcesUI>();
         aniMan = GetComponent<AnimationsManager>();
+        motor = GetComponent<UnitMovement>();
     }
 
     void Update()
@@ -26,10 +29,11 @@ public class Melee : Unit
             if(Input.GetMouseButtonDown(1))
             {
                 onRightClick();
+                motor.MoveTo(hit.point);
 
-                if(hit.transform.gameObject.GetComponent<EnemyUnit>())
+                if (hit.transform.gameObject.GetComponent<EnemyUnit>())
                 {
-                    Debug.Log("Attacking");
+                    aniMan.setAnimation(4);
                 }
             }
         }
