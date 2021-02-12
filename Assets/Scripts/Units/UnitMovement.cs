@@ -7,8 +7,8 @@ public class UnitMovement : MonoBehaviour
 {
     NavMeshAgent agent;
     AnimationsManager animManager;
-    Vector3 dir;
-    Vector3 dest;
+    public Vector3 dist;
+    public Vector3 targetPos;
 
     [SerializeField]
     bool moving;
@@ -20,37 +20,30 @@ public class UnitMovement : MonoBehaviour
 
     void Update()
     {
-        //If unit has been selected
-        if (transform.GetComponent<Selected>())
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit, 100))
-                {
-                    moving = true;
-                    //agent.isStopped = false;
-                    dest = hit.point;
-                    agent.transform.LookAt(hit.point);
-                    agent.SetDestination(hit.point);
-                    animManager.setAnimation(2);
-                }
-            }
-
-        }
-
         if(moving)
         {
-            dir = dest - transform.position;
+            dist = distanceCheck(gameObject.transform.position, targetPos);
 
-            if (dir.magnitude <= 0.5f && animManager.currentId != 3)
+            if(dist.magnitude <= 0.5f && animManager.currentId == 2)
             {
                 animManager.setAnimation(1);
-                //agent.isStopped = true;
                 moving = false;
             }
         }
+    }
+
+    public void MoveTo(Vector3 _target)
+    {
+        targetPos = _target;
+        agent.transform.LookAt(_target);
+        agent.SetDestination(_target);
+        animManager.setAnimation(2);
+        moving = true;
+    }
+
+    //Check the distance between this object and target
+    public Vector3 distanceCheck(Vector3 _origin, Vector3 _target)
+    {
+        return _origin - _target;
     }
 }
