@@ -13,6 +13,8 @@ public class Gatherer : Unit
     int gatheringValue;
     public ResourcesUI eventSystem;
     public ResourceStats resStats;
+    UnitMovement motor;
+    Vector3 dist;
 
     public Gatherer() 
     {
@@ -30,6 +32,7 @@ public class Gatherer : Unit
 
         eventSystem = FindObjectOfType<ResourcesUI>();
         aniMan = GetComponent<AnimationsManager>();
+        motor = GetComponent<UnitMovement>();
     }
 
     void Update()
@@ -39,6 +42,7 @@ public class Gatherer : Unit
             if (Input.GetMouseButtonDown(1))
             {
                 onRightClick();
+                motor.MoveTo(hit.point);
 
                 if (hit.collider.name == "GoldMine")
                 {
@@ -69,7 +73,18 @@ public class Gatherer : Unit
 
         if (gathering)
         {
-            if (gatheringRest <= 0)
+            //Break down if resources are depleted
+            if (!resStats)
+            {
+                aniMan.setAnimation(1);
+                gathering = false;
+                return;
+            }
+
+
+            dist = motor.distanceCheck(gameObject.transform.position, motor.targetPos);
+
+            if (gatheringRest <= 0 && dist.magnitude <= 1.5f)
             {
                 aniMan.setAnimation(3);
 
