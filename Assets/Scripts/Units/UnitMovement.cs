@@ -6,11 +6,16 @@ using UnityEngine.AI;
 public class UnitMovement : MonoBehaviour
 {
     NavMeshAgent agent;
-    public RuntimeAnimatorController sprint;
-    public RuntimeAnimatorController idle;
+    AnimationsManager animManager;
+    Vector3 dir;
+    Vector3 dest;
+
+    [SerializeField]
+    bool moving;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animManager = GetComponent<AnimationsManager>();
     }
 
     void Update()
@@ -25,17 +30,27 @@ public class UnitMovement : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, 100))
                 {
-                    Debug.Log(hit.point);
+                    moving = true;
+                    //agent.isStopped = false;
+                    dest = hit.point;
+                    agent.transform.LookAt(hit.point);
                     agent.SetDestination(hit.point);
-                    GetComponent<Animator>().runtimeAnimatorController = sprint;
+                    animManager.setAnimation(2);
                 }
             }
 
         }
 
-        if(agent)
+        if(moving)
         {
-            GetComponent<Animator>().runtimeAnimatorController = idle;
+            dir = dest - transform.position;
+
+            if (dir.magnitude <= 0.5f && animManager.currentId != 3)
+            {
+                animManager.setAnimation(1);
+                //agent.isStopped = true;
+                moving = false;
+            }
         }
     }
 }
