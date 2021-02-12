@@ -5,13 +5,15 @@ public class AnimationsManager : MonoBehaviour
     public RuntimeAnimatorController idle;
     public RuntimeAnimatorController sprint;
     public RuntimeAnimatorController gather;
+    public RuntimeAnimatorController attack;
+
     Animator animationController;
     public int currentId;
 
     void Start()
     {
         animationController = GetComponent<Animator>();
-        currentId = 0;
+        currentId = 1;
     }
 
     public void setAnimation(int _id)
@@ -33,6 +35,12 @@ public class AnimationsManager : MonoBehaviour
         {
             //gather
             animationController.runtimeAnimatorController = gather;
+        }
+        
+        if(_id == 4)
+        {
+            //attack
+            animationController.runtimeAnimatorController = attack;
         }
     }
 

@@ -10,6 +10,7 @@ public class Selected : MonoBehaviour
         if (TryGetComponent(out Renderer rend))
         {
             rend.material.color = Color.red;
+
         } else
         {
             GetComponentInChildren<Renderer>().material.color = Color.red;
