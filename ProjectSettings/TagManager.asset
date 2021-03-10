@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Unit
   - Resource
+  - Enemy
   layers:
   - Default
   - TransparentFX
