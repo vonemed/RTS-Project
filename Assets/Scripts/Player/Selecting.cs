@@ -16,9 +16,8 @@ public class Selecting : MonoBehaviour
     public GameObject descButton1;
     public GameObject descButton2;
     
-    BuildingStats targetBuilding;
-    UnitStats targetStats;
     ResourceStats resourceStats;
+    WorldObject current;
     bool selected;
 
     void Start()
@@ -45,10 +44,10 @@ public class Selecting : MonoBehaviour
 
                 if (hit.collider.tag == "Building")
                 {
+                    objectsList.deselectAll();
                     objectsList.addSelected(hit.transform.gameObject);
-
-                    onSelectBuilding();
-
+                    selected = true;
+                    onSelect(hit.transform.gameObject);
                 }
                 if (hit.collider.tag == "Ground")
                 {
@@ -68,7 +67,7 @@ public class Selecting : MonoBehaviour
                     objectsList.deselectAll();
                     objectsList.addSelected(hit.transform.gameObject);
                     selected = true;
-                    onSelectUnit();
+                    onSelect(hit.transform.gameObject);
                 }
 
                 if (hit.collider.tag == "Resource")
@@ -85,39 +84,18 @@ public class Selecting : MonoBehaviour
         }
     }
 
-    void onSelectBuilding()
-    {
-        targetBuilding = hit.transform.GetComponent<BuildingStats>();
-        // NEED TO CLEAN UP THE CODE
-        //Updating description of selected object
-        _name.text = targetBuilding.nameTag; // Name
-        hp.text = "HP: " + targetBuilding.hp; // Hp
-        icon.enabled = true;
-        icon.sprite = targetBuilding.icon; // Icon
-
-        descButton1.gameObject.SetActive(true);
-        descButton2.gameObject.SetActive(true);
-
-        // TODO: MOVE THIS CODE TO THE BUILDING STATS
-        descButton1.GetComponent<Button>().image.sprite = targetBuilding.unitIcon1;
-        descButton2.GetComponent<Button>().image.sprite = targetBuilding.unitIcon2;
-
-        // Assigning the description ui buttons to the building buttons
-        targetBuilding.button1 = descButton1;
-        targetBuilding.button2 = descButton2;
-    }
-
-    void onSelectUnit()
+    void onSelect(GameObject _selectedObject)
     {
         descButton1.gameObject.SetActive(false);
         descButton2.gameObject.SetActive(false);
 
-        targetStats = hit.transform.GetComponent<UnitStats>();
+        current = _selectedObject.GetComponent<WorldObject>();
+
         //Updating description of selected object
-        _name.text = targetStats.nameTag; // Name
-        hp.text = "HP: " + targetStats.hp; // Hp
+        _name.text = current.objectName; // Name
+        hp.text = "HP: " + current.currentHP; // Hp
         icon.enabled = true;
-        icon.sprite = targetStats.icon; // Icon
+        icon.sprite = current.icon; // Icon
 
     }
 }

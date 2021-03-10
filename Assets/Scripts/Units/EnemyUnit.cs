@@ -6,7 +6,7 @@ public class EnemyUnit : MonoBehaviour
 {
     void Start()
     {
-        
+        gameObject.tag = "Enemy";
     }
 
     void Update()

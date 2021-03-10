@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Gatherer : Unit
+public class Gatherer : MonoBehaviour
 {
+    //Gathering data
     bool gathering;
     bool gold;
     bool wood;
@@ -11,27 +12,31 @@ public class Gatherer : Unit
     float gatheringRate;
     float gatheringRest;
     int gatheringValue;
+
+    //UI and utility
     public ResourcesUI eventSystem;
     public ResourceStats resStats;
+    WorldObject self;
+
+    //Movement data
     UnitMovement motor;
     Vector3 dist;
-
-    public Gatherer() 
-    {
-        hp = 100;
-        g_cost = 100;
-        f_cost = 100;
-    }
-
+    RaycastHit hit;
     void Start()
     {
-        //Gatherer 
+        self = GetComponent<WorldObject>();
+
         gatheringValue = 10;
         gatheringRate = 1f;
         gatheringRest = 0;
 
+        self.setHP(100);
+        self.player = true;
+        self.g_cost = 100;
+        self.f_cost = 100;
+
         eventSystem = FindObjectOfType<ResourcesUI>();
-        aniMan = GetComponent<AnimationsManager>();
+        self.aniMan = GetComponent<AnimationsManager>();
         motor = GetComponent<UnitMovement>();
     }
 
@@ -41,7 +46,8 @@ public class Gatherer : Unit
         {
             if (Input.GetMouseButtonDown(1))
             {
-                onRightClick();
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Physics.Raycast(ray, out hit, 50000f);
                 motor.MoveTo(hit.point);
 
                 if (hit.collider.name == "GoldMine")
@@ -76,7 +82,7 @@ public class Gatherer : Unit
             //Break down if resources are depleted
             if (!resStats)
             {
-                aniMan.setAnimation(1);
+                self.aniMan.setAnimation(1);
                 gathering = false;
                 return;
             }
@@ -86,7 +92,7 @@ public class Gatherer : Unit
 
             if (gatheringRest <= 0 && dist.magnitude <= 1.5f)
             {
-                aniMan.setAnimation(3);
+                self.aniMan.setAnimation(3);
 
                 if (gold)
                 {

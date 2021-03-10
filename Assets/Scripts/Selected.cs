@@ -11,7 +11,8 @@ public class Selected : MonoBehaviour
         {
             rend.material.color = Color.red;
 
-        } else
+        }
+        else
         {
             GetComponentInChildren<Renderer>().material.color = Color.red;
         }

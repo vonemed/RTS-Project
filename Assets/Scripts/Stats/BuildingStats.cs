@@ -4,17 +4,7 @@ using UnityEngine.UI;
 
 public class BuildingStats : MonoBehaviour
 {
-    //UI
-    //Parameters
-    [Header("Parameters")]
-    public int hp;
-    public string nameTag;
-    public int gold_cost;
-    public int wood_cost;
-    public int minerals_cost;
-
     [Header("Visuals")]
-    public Sprite icon;
     public Sprite unitIcon1;
     public Sprite unitIcon2;
 
@@ -33,11 +23,16 @@ public class BuildingStats : MonoBehaviour
     public bool barracks;
     public bool special;
 
+    WorldObject self;
+
     bool selected;
 
     void Start()
     {
+        self = GetComponent<WorldObject>();
         eventSystem = FindObjectOfType<ResourcesUI>();
+
+        self.setHP(300);
     }
     void Update()
     {
@@ -64,7 +59,7 @@ public class BuildingStats : MonoBehaviour
 
                 //Button2
                 button2.GetComponent<BuildingUpgrade>().enabled = true;
-                button2.GetComponent<BuildingUpgrade>().hp = hp;
+                //button2.GetComponent<BuildingUpgrade>().hp = hp;
                 button2.GetComponent<BuildingUpgrade>().currentBuilding = this;
 
             }
@@ -97,8 +92,8 @@ public class BuildingStats : MonoBehaviour
     void deductCost()
     {
         //Deducting the resources required to build
-        eventSystem.gold_num -= gold_cost;
-        eventSystem.wood_num -= wood_cost;
-        eventSystem.minerals_num -= minerals_cost;
+        //eventSystem.gold_num -= gold_cost;
+       // eventSystem.wood_num -= wood_cost;
+        //eventSystem.minerals_num -= minerals_cost;
     }
 }

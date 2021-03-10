@@ -26,7 +26,7 @@ public class BuildingUpgrade : MonoBehaviour
         {
             hp += 100;
             upgraded = true;
-            currentBuilding.hp = hp;
+            //currentBuilding.hp = hp;
         }
     }
 }
