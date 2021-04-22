@@ -45,6 +45,7 @@ public class WorldObject : MonoBehaviour
         maxHP = _hp;
         currentHP = maxHP;
 
-        healthUI.setMaxHp(maxHP);
+        //if(healthUI) // TODO: Remove it once assigned every object a health bar
+        //healthUI.setMaxHp(maxHP);
     }
 }

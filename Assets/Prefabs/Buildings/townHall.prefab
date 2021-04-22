@@ -141,9 +141,9 @@ GameObject:
   - component: {fileID: 8493381251331015240}
   - component: {fileID: 8493381251331015241}
   - component: {fileID: 3940967098731837661}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Base
-  m_TagString: Building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -346,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8493381251868507217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -13.29321, y: -9.8170275e-18, z: 8.842393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5079667099365945196}
@@ -377,7 +377,7 @@ MonoBehaviour:
   unit: {fileID: 763547477903248987, guid: a92a8125576cb024db0677f55ffab14e, type: 3}
   unit2: {fileID: 0}
   eventSystem: {fileID: 0}
-  justPlaced: 0
+  justPlaced: 1
   townHall: 1
   barracks: 0
   special: 0
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: TownHall
-  maxHP: 0
+  maxHP: 150
   currentHP: 0
   icon: {fileID: 21300000, guid: 7c630ef158ae7d744b67e87a6478a790, type: 3}
   g_cost: 500

@@ -151,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8804138892921428239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.892268, y: -2.659526e-17, z: 23.95488}
+  m_LocalPosition: {x: -11.614057, y: 1.8314125e-17, z: -16.495895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8804138893458908949}
@@ -212,13 +212,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Barracks
-  hp: 200
+  maxHP: 250
+  currentHP: 0
   icon: {fileID: 21300000, guid: c20a2bc4c1d5bff44b200c5546becf89, type: 3}
   g_cost: 150
   w_cost: 300
   f_cost: 0
   m_cost: 0
   aniMan: {fileID: 0}
+  healthUI: {fileID: 0}
   player: 0
   ai: 0
 --- !u!1 &8804138893264957572

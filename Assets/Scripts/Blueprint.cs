@@ -13,7 +13,6 @@ public class Blueprint : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 500000f, 1 << 8))
         {
             transform.position = hit.point;
-            //Need to lift the building up when blueprint is active
         }
         //Destroy the blueprint once left mouse button is pressed
         if (Input.GetMouseButton(0))
