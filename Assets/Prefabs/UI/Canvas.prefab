@@ -301,7 +301,6 @@ GameObject:
   - component: {fileID: 365048258831688230}
   - component: {fileID: 365048258831688225}
   - component: {fileID: -3221268869322258246}
-  - component: {fileID: -5514276105666886388}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -408,26 +407,6 @@ MonoBehaviour:
     type: 3}
   special_blueprint: {fileID: 8835015789312599559, guid: a0077842ccd2fd54bb6108202b6a212a,
     type: 3}
---- !u!114 &-5514276105666886388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365048258831688224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c65702a357e44734aaa63c3aa345bf7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gold_text: {fileID: 0}
-  gold_num: 100
-  wood_text: {fileID: 0}
-  wood_num: 0
-  food_text: {fileID: 0}
-  food_num: 0
-  minerals_text: {fileID: 0}
-  minerals_num: 0
 --- !u!1 &365048258927715175
 GameObject:
   m_ObjectHideFlags: 0
