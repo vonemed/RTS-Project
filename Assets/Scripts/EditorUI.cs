@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic; // For list
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -6,7 +7,11 @@ public class EditorUI : MonoBehaviour
 {
     public Button exitButton;
     public Button[] buttonsArray = new Button[4]; // Array to hold buttons
+    /// <summary>
+    /// Array that holds all available game assets
+    /// </summary>
     ObjectsManager objectManagerRef;
+
     void Start()
     {
         exitButton.onClick.AddListener(ExitEditor);

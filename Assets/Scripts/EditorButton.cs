@@ -8,7 +8,6 @@ public class EditorButton : MonoBehaviour
     RaycastHit hit;
     GameObject spawnedObj;
     bool placing;
-
     void Start()
     {
         self = GetComponent<Button>();
@@ -30,7 +29,7 @@ public class EditorButton : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 spawnedObj.GetComponentInChildren<BuildingStats>().justPlaced = true;
-                //Instantiate(prefab, transform.position, transform.rotation);
+                GameObject.FindObjectOfType<EditorManager>().objectsOnScene.Add(spawnedObj); // Adding placed object into the list of objects on the scene
                 placing = false;
             }
 

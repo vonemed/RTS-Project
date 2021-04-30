@@ -5,8 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Save 
 {
-    public List<int> existingObjects = new List<int>();
+    public List<GameObject> existingObjects = new List<GameObject>();
     public List<int> existingObjectsPosition = new List<int>();
-
-
 }
