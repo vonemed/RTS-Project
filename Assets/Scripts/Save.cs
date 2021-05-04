@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Xml.Linq;
+using System.Runtime.Serialization;
 
-[System.Serializable]
+[DataContract]
 public class Save 
 {
+    [DataMember]
     public List<GameObject> existingObjects = new List<GameObject>();
-    public List<int> existingObjectsPosition = new List<int>();
+    [DataMember]
+    public List<Vector3> existingObjectsPosition = new List<Vector3>();
 }

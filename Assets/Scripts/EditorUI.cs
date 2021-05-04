@@ -24,14 +24,6 @@ public class EditorUI : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        for (int i = 0; i < buttonsArray.Length; i++)
-        {
-            //Add a listener to each button to spawn an assigned object
-        }
-    }
-
     void ExitEditor()
     {
         SceneManager.LoadScene("MainMenu");
