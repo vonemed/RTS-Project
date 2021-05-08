@@ -48,4 +48,9 @@ public class WorldObject : MonoBehaviour
         //if(healthUI) // TODO: Remove it once assigned every object a health bar
         //healthUI.setMaxHp(maxHP);
     }
+
+    public void setPosition(Vector3 _pos)
+    {
+        transform.position = _pos;
+    }
 }

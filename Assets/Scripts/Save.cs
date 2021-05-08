@@ -4,11 +4,11 @@ using UnityEngine;
 using System.Xml.Linq;
 using System.Runtime.Serialization;
 
-[DataContract]
+[System.Serializable]
 public class Save 
 {
-    [DataMember]
-    public List<GameObject> existingObjects = new List<GameObject>();
-    [DataMember]
+    public List<string> existingObjects = new List<string>();
+    //public List<WorldObject> existingObjects = new List<WorldObject>();
+
     public List<Vector3> existingObjectsPosition = new List<Vector3>();
 }
