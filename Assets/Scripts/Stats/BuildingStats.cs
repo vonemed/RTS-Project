@@ -31,8 +31,6 @@ public class BuildingStats : MonoBehaviour
     {
         self = GetComponent<WorldObject>();
         eventSystem = FindObjectOfType<ResourcesUI>();
-
-        self.setHP(300);
     }
     void Update()
     {

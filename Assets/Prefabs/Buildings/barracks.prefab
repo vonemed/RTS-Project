@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 271291243523965399}
   - component: {fileID: 9013693893733182636}
   - component: {fileID: 5028323461416563942}
+  - component: {fileID: -3878942900090560170}
   m_Layer: 9
   m_Name: barracks
   m_TagString: Building
@@ -151,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8804138892921428239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.614057, y: 1.8314125e-17, z: -16.495895}
+  m_LocalPosition: {x: -10.493395, y: -1.0748165e-17, z: 9.681086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8804138893458908949}
@@ -213,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Barracks
   maxHP: 250
-  currentHP: 0
+  currentHP: 250
   icon: {fileID: 21300000, guid: c20a2bc4c1d5bff44b200c5546becf89, type: 3}
   g_cost: 150
   w_cost: 300
@@ -223,6 +224,25 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   player: 0
   ai: 0
+  objId: Barracks
+--- !u!114 &-3878942900090560170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804138892921428239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d404966f98be8d34a853f9d6b3effd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 1
+  objData:
+    id: 
+    objectType: 1
+    objectPos: {x: 0, y: 0, z: 0}
+    objectRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8804138893264957572
 GameObject:
   m_ObjectHideFlags: 0

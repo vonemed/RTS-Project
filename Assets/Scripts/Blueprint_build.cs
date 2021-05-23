@@ -4,6 +4,7 @@ public class Blueprint_build : MonoBehaviour
 {
     public GameObject townhall_blueprint;
     public GameObject barracks_blueprint;
+    public GameObject house_blueprint;
     public GameObject special_blueprint;
 
     public void SpawnTownHallBlueprint()
@@ -17,5 +18,10 @@ public class Blueprint_build : MonoBehaviour
     public void SpawnSpecialBlueprint()
     {
         Instantiate(special_blueprint);
+    }
+
+    public void SpawnHouseBlueprint()
+    {
+        Instantiate(house_blueprint);
     }
 }

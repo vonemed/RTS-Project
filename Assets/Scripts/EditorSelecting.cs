@@ -8,10 +8,6 @@ public class EditorSelecting : MonoBehaviour
     RaycastHit hit;
     bool selected;
     public Text[] textArray;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -51,14 +47,8 @@ public class EditorSelecting : MonoBehaviour
             _selectedObject.AddComponent<Selected>();
 
             textArray[0].text = _selectedObject.GetComponent<WorldObject>().objectName;
-
-        }
-        else
-        {
-            Destroy(_selectedObject.GetComponent<Selected>());
-
-            //TODO
-            //For loop to clear up all the text
+            textArray[1].text = _selectedObject.GetComponent<WorldObject>().currentHP.ToString();
+            textArray[2].text = _selectedObject.GetComponent<WorldObject>().g_cost.ToString();
         }
     }
 }

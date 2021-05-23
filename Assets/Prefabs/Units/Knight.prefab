@@ -889,8 +889,8 @@ GameObject:
   - component: {fileID: 8687727636373226282}
   - component: {fileID: 6500448648375113294}
   - component: {fileID: 3283577407998379916}
-  - component: {fileID: 3962012194259378136}
   - component: {fileID: 484478532355609619}
+  - component: {fileID: 7575643285879216505}
   m_Layer: 10
   m_Name: Knight
   m_TagString: Unit
@@ -1000,9 +1000,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6d6ad7848a64e40a8c918aa70b0a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  maxHP: 0
-  currentHP: 0
+  objectName: Knight
+  maxHP: 100
+  currentHP: 100
   icon: {fileID: 21300000, guid: 3091baeb763c13a4ba77eb3fb4ceb526, type: 3}
   g_cost: 0
   w_cost: 0
@@ -1012,6 +1012,7 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   player: 0
   ai: 0
+  objId: 
 --- !u!114 &3283577407998379916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,7 +1020,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4530196603412966660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1486d2e11e3d084eb2203d462ac8800, type: 3}
   m_Name: 
@@ -1028,30 +1029,6 @@ MonoBehaviour:
   resStats: {fileID: 0}
   healthUI: {fileID: 1765973372246058209, guid: 1c8eb29e99da385409085a0c73068edb,
     type: 3}
---- !u!114 &3962012194259378136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4530196603412966660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef6d6ad7848a64e40a8c918aa70b0a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Knight
-  maxHP: 0
-  currentHP: 0
-  icon: {fileID: 21300000, guid: 3091baeb763c13a4ba77eb3fb4ceb526, type: 3}
-  g_cost: 0
-  w_cost: 0
-  f_cost: 0
-  m_cost: 0
-  aniMan: {fileID: 0}
-  healthUI: {fileID: 0}
-  player: 0
-  ai: 0
 --- !u!65 &484478532355609619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1065,6 +1042,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.6165843, z: 1}
   m_Center: {x: 0, y: 0.80829215, z: 0}
+--- !u!114 &7575643285879216505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530196603412966660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d404966f98be8d34a853f9d6b3effd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 0
+  objData:
+    id: 
+    objectType: 0
+    objectPos: {x: 0, y: 0, z: 0}
+    objectRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4566516245193241589
 GameObject:
   m_ObjectHideFlags: 0

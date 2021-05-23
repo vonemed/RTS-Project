@@ -8,6 +8,8 @@ public class EditorButton : MonoBehaviour
     RaycastHit hit;
     GameObject spawnedObj;
     bool placing;
+
+    private float rotationSpeed = 200f;
     void Start()
     {
         self = GetComponent<Button>();
@@ -25,11 +27,21 @@ public class EditorButton : MonoBehaviour
             {
                 spawnedObj.transform.position = hit.point;
             }
-            //Destroy the blueprint once left mouse button is pressed
+
+            if (Input.GetKey(KeyCode.Z))
+            {
+                spawnedObj.transform.Rotate(transform.up, -rotationSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                spawnedObj.transform.Rotate(transform.up, rotationSpeed * Time.deltaTime);
+            }
+
             if (Input.GetMouseButton(0))
             {
-                spawnedObj.GetComponentInChildren<BuildingStats>().justPlaced = true;
                 GameObject.FindObjectOfType<EditorManager>().objectsOnScene.Add(spawnedObj); // Adding placed object into the list of objects on the scene
+                spawnedObj.GetComponent<ObjectHandler>().saveParameters();
                 placing = false;
             }
 
@@ -41,7 +53,7 @@ public class EditorButton : MonoBehaviour
         }
     }
 
-    void spawnObject()
+    public void spawnObject()
     {
         placing = true;
         spawnedObj = Instantiate(prefab);

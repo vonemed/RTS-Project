@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 2333820072896844327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.14609, y: 0.14609, z: 0.14609}
   m_Children:
   - {fileID: 7275736997511345103}
   m_Father: {fileID: 8493381251868507216}
@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.00000095367, y: 3.4}
+  m_SizeDelta: {x: 100, y: 99.95131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8182458070699977279
 Canvas:
@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 9064105950866750772}
   - component: {fileID: 7410056212689279078}
   - component: {fileID: 4756806559105387424}
+  - component: {fileID: -2299429983837800081}
   m_Layer: 9
   m_Name: townHall
   m_TagString: Building
@@ -346,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8493381251868507217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.29321, y: -9.8170275e-18, z: 8.842393}
+  m_LocalPosition: {x: -6.081846, y: 9.139494e-18, z: -8.232123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5079667099365945196}
@@ -395,7 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: TownHall
   maxHP: 150
-  currentHP: 0
+  currentHP: 150
   icon: {fileID: 21300000, guid: 7c630ef158ae7d744b67e87a6478a790, type: 3}
   g_cost: 500
   w_cost: 200
@@ -405,6 +406,7 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   player: 0
   ai: 0
+  objId: TownHall
 --- !u!65 &4756806559105387424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -418,6 +420,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.33926, y: 3.5799112, z: 5.0001}
   m_Center: {x: -0.121650696, y: 1.7899556, z: -0.0000500679}
+--- !u!114 &-2299429983837800081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493381251868507217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d404966f98be8d34a853f9d6b3effd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 0
+  objData:
+    id: 
+    objectType: 0
+    objectPos: {x: 0, y: 0, z: 0}
+    objectRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8493381251960841597
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +675,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6173143880949266056, guid: 1c8eb29e99da385409085a0c73068edb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000005722046
+      objectReference: {fileID: 0}
     - target: {fileID: 8466293378624781357, guid: 1c8eb29e99da385409085a0c73068edb,
         type: 3}
       propertyPath: m_Pivot.x
@@ -693,12 +718,12 @@ PrefabInstance:
     - target: {fileID: 8466293378624781357, guid: 1c8eb29e99da385409085a0c73068edb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 68.53677
+      value: 63.626503
       objectReference: {fileID: 0}
     - target: {fileID: 8466293378624781357, guid: 1c8eb29e99da385409085a0c73068edb,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 13.556595
+      value: 13.070007
       objectReference: {fileID: 0}
     - target: {fileID: 8466293378624781357, guid: 1c8eb29e99da385409085a0c73068edb,
         type: 3}
@@ -753,12 +778,12 @@ PrefabInstance:
     - target: {fileID: 8466293378624781357, guid: 1c8eb29e99da385409085a0c73068edb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.00000095367
       objectReference: {fileID: 0}
     - target: {fileID: 8466293378624781357, guid: 1c8eb29e99da385409085a0c73068edb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 43.222
+      value: 7.52
       objectReference: {fileID: 0}
     - target: {fileID: 8466293378624781357, guid: 1c8eb29e99da385409085a0c73068edb,
         type: 3}

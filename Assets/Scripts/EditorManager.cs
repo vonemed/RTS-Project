@@ -15,118 +15,64 @@ public class EditorManager : MonoBehaviour
     ObjectsManager objRef;
     public Button saveButton;
     public Button loadButton;
+    public Button clearButton;
 
     string json;
+
+    void Awake()
+    {
+        CheckLoadedObjects();
+    }
+
     void Start()
     {
         saveButton.onClick.AddListener(SaveGame);
         loadButton.onClick.AddListener(LoadGame);
+        clearButton.onClick.AddListener(ClearScene);
         objRef = GetComponent<ObjectsManager>();
+        //CheckLoadedObjects();
     }
 
     void SaveGame()
     {
+        //CheckLoadedObjects();
         //Add all of the positions of gameobjects
-        Save save = new Save();
 
-        // Saving objects on the scene
+        json = JsonUtility.ToJson(SaveData.current);
 
-        foreach (GameObject currentGameObject in objectsOnScene) // Saving position of objects on the scene
-        {
-            save.existingObjectsPosition.Add(currentGameObject.GetComponent<Transform>().transform.position);
-            save.existingObjects.Add(currentGameObject.GetComponent<WorldObject>().objectName);
-            //save.existingObjects.Add(currentGameObject.GetComponent<WorldObject>());
-        }
-
-        json = JsonUtility.ToJson(save);
-        //FileStream file = File.Create(Application.persistentDataPath + "/gamesave.json"); // C:\Users\gleba\AppData\LocalLow\DefaultCompany
         File.WriteAllText(Application.persistentDataPath + "/gamesave.json", json);
 
-        Debug.Log("Saving as JSON" + save);
-
         Debug.Log(json);
-       //file.Close();
-        ClearScene();
-        /* /// Binary formatter variant (not working (can't save GameObjects))
-        BinaryFormatter bf = new BinaryFormatter();
-        bf.Serialize(file, save);
-        */
-
-        /*/// XML variant 
-        //Serializing to Xml
-        DataContractSerializer bf = new DataContractSerializer(save.GetType());
-        MemoryStream streamer = new MemoryStream();
-
-        //Serializing to file   
-        bf.WriteObject(streamer, save);
-        streamer.Seek(0, SeekOrigin.Begin);
-
-        //Save to disk 
-        file.Write(streamer.GetBuffer(), 0, streamer.GetBuffer().Length);
-
-        string result = XElement.Parse(Encoding.ASCII.GetString(streamer.GetBuffer()).Replace("\0", "")).ToString();
-        Debug.Log("Serialized Result: " + result);
-        */
     }
 
     void LoadGame()
     {
+        ClearScene();
+
         if (File.Exists(Application.persistentDataPath + "/gamesave.json"))
         {
-            //FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
-
             json = File.ReadAllText(Application.persistentDataPath + "/gamesave.json");
-            Save LoadSave = JsonUtility.FromJson<Save>(json);
+            SaveData.current = JsonUtility.FromJson<SaveData>(json);
 
-            //file.Close();
-            //Problem: If save two of the same prefab, it only loads once
-            //and if saved objects are not in the same order as in prefabArray
-            foreach (string wrldObj in LoadSave.existingObjects)
+            for(int i = 0; i < SaveData.current.objectsToSave.Count; i++)
             {
-                //Solution
-                for(int i = 0; i < objRef.prefabArray.Length; i++)
-                {
-                    if(wrldObj == objRef.prefabArray[i].GetComponent<WorldObject>().objectName)
-                    {
-                        Instantiate(objRef.prefabArray[i], LoadSave.existingObjectsPosition[i], Quaternion.identity);
-                        Debug.Log("Instantiating");
-                        break;
-                    }
-                }
+                Debug.Log("Loading objects...");
 
-                /*if(wrldObj == objRef.prefabArray[i].GetComponent<WorldObject>().objectName)
-                {
-                    //Instantiate
-                   
-                    Instantiate(objRef.prefabArray[i]);
-                    i++;
+                ObjectData currentObj = SaveData.current.objectsToSave[i];
+                GameObject obj = Instantiate(objRef.buildingsArray[(int)currentObj.objectType]); //???
+                ObjectHandler objHandler = obj.GetComponent<ObjectHandler>();
+                objHandler.objData = currentObj;
+                obj.transform.position = currentObj.objectPos;
+                obj.transform.rotation = currentObj.objectRot;
 
-                    //Problem: If save two of the same prefab, it only loads once
-                    //and if saved objects are not in the same order as in prefabArray
-                    //Solved: with for loop and if function
-
-                    //For loop with if loop
-                    //Store transforms not vector3
-                }*/
+                objectsOnScene.Add(obj);
             }
 
-            //TODO 
-            //FIND A WAY TO PROPERLY LOAD OBJJECTS
-
-            //Load prefabs from Resources and apply parameters
-            //SOLVED
-
-            //TUWTUTUTUTUTU
-            //Save the names of the objects
-            // Load the save and then compare saved names to the assets object and load proper prefab
-            //SOLVED
-
-            //Problem: Can't save previously loaded objects
             Debug.Log("Game Loaded");
         }
     }
 
-    void ClearScene()
+    public void ClearScene()
     {
         foreach(GameObject sceneObj in objectsOnScene)
         {
@@ -134,5 +80,18 @@ public class EditorManager : MonoBehaviour
         }
 
         objectsOnScene.Clear();
+    }
+
+    void CheckLoadedObjects()
+    {
+        var currentObj = FindObjectsOfType<GameObject>();
+
+        foreach (GameObject gmObj in currentObj)
+        {
+            if (gmObj.GetComponent<WorldObject>())
+            {
+                objectsOnScene.Add(gmObj);
+            }
+        }
     }
 }

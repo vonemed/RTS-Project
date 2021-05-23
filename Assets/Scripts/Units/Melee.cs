@@ -32,7 +32,7 @@ public class Melee : MonoBehaviour
         motor = GetComponent<UnitMovement>();
         healthUI = GetComponentInChildren<HealthBar>();
 
-        self.setHP(250);
+        //self.setHP(250);
         self.g_cost = 150;
         self.player = true;
 

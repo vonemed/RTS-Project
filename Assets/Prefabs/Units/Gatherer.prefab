@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 2311983370310400842}
   - component: {fileID: 8520695001147778399}
   - component: {fileID: 5546245675321309438}
+  - component: {fileID: 5042728652983986169}
   m_Layer: 10
   m_Name: Gatherer
   m_TagString: Unit
@@ -553,8 +554,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Gatherer
-  maxHP: 0
-  currentHP: 0
+  maxHP: 150
+  currentHP: 100
   icon: {fileID: 21300000, guid: 041b26edc8142024a8ddfd58e95e4cb5, type: 3}
   g_cost: 0
   w_cost: 0
@@ -564,6 +565,25 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   player: 0
   ai: 0
+  objId: 
+--- !u!114 &5042728652983986169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763547477903248987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d404966f98be8d34a853f9d6b3effd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 0
+  objData:
+    id: 
+    objectType: 0
+    objectPos: {x: 0, y: 0, z: 0}
+    objectRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &763547477903248989
 GameObject:
   m_ObjectHideFlags: 0

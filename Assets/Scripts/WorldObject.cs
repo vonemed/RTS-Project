@@ -21,6 +21,7 @@ public class WorldObject : MonoBehaviour
     public bool player;
     public bool ai;
 
+    public string objId;
     void Awake()
     {
         healthUI = GetComponentInChildren<HealthBar>();
