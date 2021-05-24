@@ -8,6 +8,7 @@ public class SaveData
     //Singleton
     private static SaveData _current;
 
+    public List<ObjectData> objectsToSave = new List<ObjectData>();
     public static SaveData current
     {
         
@@ -28,5 +29,4 @@ public class SaveData
         }
     }
 
-    public List<ObjectData> objectsToSave = new List<ObjectData>();
 }

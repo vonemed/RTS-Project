@@ -47,6 +47,7 @@ public class Melee : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(1))
             {
+                Debug.Log("Walking!");
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 Physics.Raycast(ray, out hit, 50000f);
                 motor.MoveTo(hit.point);

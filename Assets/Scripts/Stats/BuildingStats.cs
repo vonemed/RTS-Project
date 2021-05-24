@@ -56,9 +56,9 @@ public class BuildingStats : MonoBehaviour
                 townHall = false; //Stop flag for now
 
                 //Button2
-                button2.GetComponent<BuildingUpgrade>().enabled = true;
+                //button2.GetComponent<BuildingUpgrade>().enabled = true;
                 //button2.GetComponent<BuildingUpgrade>().hp = hp;
-                button2.GetComponent<BuildingUpgrade>().currentBuilding = this;
+                //button2.GetComponent<BuildingUpgrade>().currentBuilding = this;
 
             }
             if (barracks)
@@ -83,7 +83,7 @@ public class BuildingStats : MonoBehaviour
             //THIS IS NOT OPTIMAl
             button1.GetComponent<UnitSpawn>().enabled = false;
             button2.GetComponent<UnitSpawn>().enabled = false;
-            button2.GetComponent<BuildingUpgrade>().enabled = false;
+            //button2.GetComponent<BuildingUpgrade>().enabled = false;
         }
     }
 
